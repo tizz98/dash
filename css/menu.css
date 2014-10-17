@@ -244,7 +244,7 @@ body.show-menu .menu-button {
 	color: #7d8194;
 }
 
-#title a, .link-list a {
+#title a, .link-list a, .icon-list a {
 	cursor: pointer;
 	color: #7d8194;
 }

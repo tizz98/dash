@@ -36,8 +36,8 @@
           </div>
           <div class="icon-list">
             <a href="/about/"><i class="fa fa-fw fa-question-circle"></i></a>
-            <a onclick="edit()"><i class="fa fa-fw fa-pencil"></i></a>
-            <a onclick="save()"><i class="fa fa-fw fa-save"></i></a>
+            <a onclick="edit()" id="edit"><i class="fa fa-fw fa-pencil"></i></a>
+            <a onclick="save()" id="save"><i class="fa fa-fw fa-save"></i></a>
           </div>
         </nav>
       </div>
@@ -172,7 +172,7 @@
           </div>
           <div class="modal-footer">
              <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-warning"></i> Discard changes</button>
-              <button type="button" class="btn btn-success"><i class="fa fa-fw fa-check"></i> Save changes</button>
+              <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-fw fa-check"></i> Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

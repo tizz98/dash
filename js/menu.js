@@ -48,3 +48,34 @@
 	init();
 
 })();
+
+function edit() {
+	$('#edit').hide();
+	$('#save').show();
+	var objs = document.querySelectorAll('.column .portlet .row')
+	
+	for (var i in objs) {
+		$(objs[i]).addClass('portlet-content');
+	}
+}
+
+function save() {
+	$('#edit').show();
+	$('#save').hide();
+	var objs = document.querySelectorAll('.column .portlet .row')
+	
+	for (var i in objs) {
+		$(objs[i]).removeClass('portlet-content');
+	}
+}
+
+function init() {
+	$('#edit').show();
+	$('#save').hide();
+	var objs = document.querySelectorAll('.column .portlet .row')
+	
+	for (var i in objs) {
+		$(objs[i]).removeClass('portlet-content');
+	}
+}
+init();
