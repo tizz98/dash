@@ -69,7 +69,7 @@ function save() {
 	}
 }
 
-function init() {
+function es_init() {
 	$('#edit').show();
 	$('#save').hide();
 	var objs = document.querySelectorAll('.column .portlet .row')
@@ -78,4 +78,4 @@ function init() {
 		$(objs[i]).removeClass('portlet-content');
 	}
 }
-init();
+es_init();
