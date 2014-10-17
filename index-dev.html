@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>my dashboard</title>
+    <link rel="icon" href="img/icon.ico">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/portlets.css">
+    <link rel="stylesheet" href="css/sweet-alert.css">
+    <link rel="stylesheet" href="css/switches.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+      <div class="menu-wrap">
+        <nav class="menu">
+          <div class="profile"><span id="title">5e28453f <a onclick="copy('5e28453f')"><i class="fa fa-fw fa-link"></i></a></span></div>
+          <div class="link-list">
+            <a onclick="setTemp()">&deg;C / &deg;F</a>
+            <a onclick="setTime()">24h / 12h</a>
+            <a onclick="setStocks()"><i class="fa fa-fw fa-bar-chart"></i> Stocks</a>
+          </div>
+          <div class="icon-list">
+            <a href="#"><i class="fa fa-fw fa-question-circle"></i></a>
+            <a href="#"><i class="fa fa-fw fa-pencil"></i></a>
+            <a href="#"><i class="fa fa-fw fa-save"></i></a>
+          </div>
+        </nav>
+      </div>
+      <button class="menu-button" id="open-button"><i class="fa fa-fw fa-cog"></i><span>Open Menu</span></button>
+
+    <div class="container">
+
+      <div class="text-center" id="content">
+
+        <div class="column">
+          <div class="portlet">
+            <div class="row portlet-content" id="date">
+              <h3><span id="month"></span> <span id="day"></span>, <span id="year"></span></h3>
+            </div>
+          </div>
+
+          <div class="portlet">
+            <div class="row portlet-content" id="clock">
+              <h1><span id="time"></span></h1>
+            </div>
+          </div>
+
+          <div class="portlet">
+            <div class="row portlet-content" id="weather">
+              <div class="col-md-4" id="today">
+                  <h4>Today</h4><br>
+                  <div class="row">
+                    <div class="col-xs-6 text-right">
+                      <p class="icon"></p>
+                    </div>
+                    <div class="col-xs-6 text-left">
+                      <p><span class="cond"></span></p>
+                      <p><i class="fa fa-arrow-up fa-fw"></i> <span class="high">0</span>&deg; &nbsp; <br class="rwd-break" /><i class="fa fa-arrow-down fa-fw"></i> <span class="low">0</span>&deg;</p>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4" id="tmw">
+                  <h4>Tomorrow</h4><br>
+                  <div class="row">
+                    <div class="col-xs-6 text-right">
+                      <p class="icon"></p>
+                    </div>
+                    <div class="col-xs-6 text-left">
+                      <p><span class="cond"></span></p>
+                      <p><i class="fa fa-arrow-up fa-fw"></i> <span class="high">0</span>&deg; &nbsp; <br class="rwd-break" /><i class="fa fa-arrow-down fa-fw"></i> <span class="low">0</span>&deg;</p>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col-md-4" id="dat">
+                  <h4><span id="dat_name"></span></h4><br>
+                  <div class="row">
+                    <div class="col-xs-6 text-right">
+                      <p class="icon"></p>
+                    </div>
+                    <div class="col-xs-6 text-left">
+                      <p><span class="cond"></span></p>
+                      <p><i class="fa fa-arrow-up fa-fw"></i> <span class="high">0</span>&deg; &nbsp; <br class="rwd-break" /><i class="fa fa-arrow-down fa-fw"></i> <span class="low">0</span>&deg;</p>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div> <!-- end portlet -->
+
+          <div class="portlet">
+            <div class="row text-left portlet-content" id="news">
+            </div>
+          </div>
+
+          <div class="portlet">
+            <div class="row text-center portlet-content" id="stocks">
+                <div class="col-xs-3" id="s_0">
+                  <h4 class="title">AAPL</h4>
+                  <p class="price">$99.60</p>
+                  <p class="percent"><i class="fa fa-arrow-down fa-fw red"></i> -0.3%</p>
+                </div>
+                <div class="col-xs-3" id="s_1">
+                  <h4 class="title">AAPL</h4>
+                  <p class="price">$99.60</p>
+                  <p class="percent"><i class="fa fa-arrow-down fa-ellipsis-h"></i> 0.00%</p>
+                </div>
+                <div class="col-xs-3" id="s_2">
+                   <h4 class="title">AAPL</h4>
+                  <p class="price">$99.60</p>
+                  <p class="percent"><i class="fa fa-arrow-up fa-fw green"></i> 0.3%</p>
+                </div>
+                <div class="col-xs-3" id="s_3">
+                  <h4 class="title">AAPL</h4>
+                  <p class="price">$99.60</p>
+                  <p class="percent"><i class="fa fa-arrow-down fa-fw red"></i> -0.3%</p>
+                </div>
+            </div>
+          </div>
+
+          <div id="newMod">
+            <a onclick="modulePopup()">
+              <div class="new">
+              </div>
+            </a>
+          </div>
+
+        </div> <!-- end column -->
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modulesModal" tabindex="-1" role="dialog" aria-labelledby="modulesModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add new module</h4>
+          </div>
+          <div class="modal-body">
+            <ul class="list-unstyled">
+              <li><a onclick="addRemove('add',date)">+ Date</a></li>
+              <li><a onclick="addRemove('add',time)">+ Time</a></li>
+              <li><a onclick="addRemove('add',news)">+ News</a></li>
+              <li><a onclick="addRemove('add',stocks)">+ Stocks</a></li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script src="js/date.min.js"></script>
+    <script src="js/time.js"></script>
+    <script src="js/codes.min.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/news.js"></script> 
+    <script src="js/sweet-alert.min.js"></script>
+    <script src="js/helpers.js"></script>
+
+    <!-- <script src="js/dash.min.js"></script> -->
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/modules.js"></script>
+
+    <script src="js/jquery-ui.min.js"></script>
+  <script src="js/portlets.js"></script>
+
+  </body>
+</html>
