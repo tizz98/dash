@@ -4,8 +4,10 @@ function getWeather(location, units) {
 	}
 
 	if (units == undefined || units == '' || units == 'f') {
+		data['temp'] = 'f';
 		var url = "https://query.yahooapis.com/v1/public/yql?q=SELECT * FROM weather.forecast WHERE woeid in (select woeid from geo.places(1) where text='" + location + "') and u='f'&format=json";
 	} else if (units == 'c') {
+		data['temp'] = 'c';
 		var url = "https://query.yahooapis.com/v1/public/yql?q=SELECT * FROM weather.forecast WHERE woeid in (select woeid from geo.places(1) where text='" + location + "') and u='c'&format=json";
 	} else {
 		console.log('weird units passed into weather');
@@ -46,11 +48,22 @@ $( document ).ready(function() {
 	getWWL();
 });
 
-function getWWL(units) {
-	$.get("http://ipinfo.io", function(response) {
-	    var location = response.city + ", " + response.region;
-	    getWeather(location, units);
-	}, "jsonp");
+function getWWL(units,send) {
+	if (send == true) {
+		$.get("http://ipinfo.io", function(response) {
+		    var location = response.city + ", " + response.region;
+		    getWeather(location, units);
+		}, "jsonp")
+		.done(function(){
+			sendData(data);
+		});
+	} else {
+		$.get("http://ipinfo.io", function(response) {
+		    var location = response.city + ", " + response.region;
+		    getWeather(location, units);
+		}, "jsonp");
+	}
+
 }
 
 function setToday (high, low, cond, code) {

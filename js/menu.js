@@ -67,6 +67,8 @@ function save() {
 	for (var i in objs) {
 		$(objs[i]).removeClass('portlet-content');
 	}
+
+	sendData(data);
 }
 
 function es_init() {

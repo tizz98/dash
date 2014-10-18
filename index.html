@@ -30,8 +30,8 @@
         <nav class="menu">
           <div class="profile"><span id="title">5e28453f <a onclick="copy()"><i class="fa fa-fw fa-link"></i></a></span></div>
           <div class="link-list">
-            <p><a onclick="getWWL('c')">&deg;C</a> / <a onclick="getWWL('f')">&deg;F</a></p>
-            <p><a onclick="updateClock('24')">24h</a> / <a onclick="updateClock('12')">12h</a></p>
+            <p><a onclick="getWWL('c', true)">&deg;C</a> / <a onclick="getWWL('f', true)">&deg;F</a></p>
+            <p><a onclick="updateClock('24');sendData(data)">24h</a> / <a onclick="updateClock('12');sendData(data)">12h</a></p>
             <p><a onclick="changeStocks()"><i class="fa fa-fw fa-bar-chart"></i> Stocks</a></p>
           </div>
           <div class="icon-list">
@@ -49,19 +49,19 @@
 
         <div class="column">
           <div class="portlet">
-            <div class="row portlet-content" id="date">
+            <div class="row portlet-content mod" id="date">
               <h3><span id="month"></span> <span id="day"></span>, <span id="year"></span></h3>
             </div>
           </div>
 
           <div class="portlet">
-            <div class="row portlet-content" id="clock">
+            <div class="row portlet-content mod" id="clock">
               <h1><span id="time"></span></h1>
             </div>
           </div>
 
           <div class="portlet">
-            <div class="row portlet-content" id="weather">
+            <div class="row portlet-content mod" id="weather">
               <div class="col-md-4" id="today">
                   <h4>Today</h4><br>
                   <div class="row">
@@ -104,12 +104,12 @@
           </div> <!-- end portlet -->
 
           <div class="portlet">
-            <div class="row text-left portlet-content" id="news">
+            <div class="row text-left portlet-content mod" id="news">
             </div>
           </div>
 
           <div class="portlet">
-            <div class="row text-center portlet-content" id="stocks">
+            <div class="row text-center portlet-content mod" id="stocks">
                 <div class="col-xs-3" id="s_0">
                   <h4 class="title">AAPL</h4>
                   <p class="price">$99.60</p>
@@ -158,7 +158,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close" onclick="resetStocks()" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h4 class="modal-title">Stocks</h4>
           </div>
           <div class="modal-body">
@@ -171,8 +171,8 @@
             </div>
           </div>
           <div class="modal-footer">
-             <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-fw fa-warning"></i> Discard changes</button>
-              <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fa fa-fw fa-check"></i> Save changes</button>
+             <button type="button" class="btn btn-danger" onclick="resetStocks()" data-dismiss="modal"><i class="fa fa-fw fa-warning"></i> Discard changes</button>
+              <button type="button" class="btn btn-success" onclick="saveStocks()" data-dismiss="modal"><i class="fa fa-fw fa-check"></i> Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

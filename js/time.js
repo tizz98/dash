@@ -7,11 +7,13 @@ function updateClock(h) {
 	sec   = now.getSeconds();
 
 	if (h == '12') {
+		data['time'] = '12';
 		clearTimeout(timer);
 		if (hours > 12) {
 			hours -= 12;
 		}
 	} else if (h == '24') {
+		data['time'] = '24';
 		clearTimeout(timer);
 	}
 
