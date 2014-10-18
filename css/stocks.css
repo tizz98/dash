@@ -8,3 +8,11 @@
 	margin: 0 1em 1em 0;
 	height: 20px;
 }
+
+#stocks_modal .portlet-content {
+	display: inline-block;
+}
+
+.s_edit {
+	cursor: pointer;
+}
