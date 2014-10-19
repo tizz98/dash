@@ -27,8 +27,8 @@ rescue Exception => e
 end
 
 if success
-	puts "Results: #{data['Symbol']} at $#{data['LastPrice']}."
-
+	price = '%.2f' % data['LastPrice']
+	puts "Results: #{data['Symbol']} at $#{price}."
 	percent = data['ChangePercent'].round(2)
 
 	if percent > 0
