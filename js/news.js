@@ -6,11 +6,14 @@ function getNews() {
 
 		for (var i = 0; i <= 2; i++){
 			news += '<div class="story"><h4><a href="' + results[i].fields.shortUrl + '" target=blank>' + results[i].fields.headline + '</a></h4>';
-			news += results[i].fields.standfirst + '</div><br>';
+			if (results[i].fields.standfirst != null || results[i].fields.standfirst != undefined) {
+				news += results[i].fields.standfirst;
+			} 
+
+			news += '</div><br>';
 		}
 
 		my_news.innerHTML = news;
 	});
-	setTimeout(getNews, 3600000); // every hour get news
 }
 getNews();
