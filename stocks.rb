@@ -1,22 +1,43 @@
 require 'open-uri'
 require 'json'
 
-puts "symbol:"
+puts "SEARCH FOR COMPANY:"
+search = gets.chomp
+
+search_url = 'http://dev.markitondemand.com/Api/v2/Lookup/json?input=' + search
+search_content = open(search_url).read
+results = JSON.parse(search_content)
+
+puts "Results: "
+results.each do |item|
+	puts "#{item['Symbol']} (#{item['Name']}) - #{item['Exchange']}"
+end
+
+puts "Enter symbol:"
 symbol = gets.chomp
 
 url = 'http://dev.markitondemand.com/Api/v2/Quote/json?symbol=' + symbol
 content = open(url).read
-
 data = JSON.parse(content)
 
-puts "Results: #{data['Symbol']} at $#{data['LastPrice']}."
+begin
+	success = data['Status'] == 'SUCCESS'
+rescue Exception => e
+	success = false
+end
 
-percent = data['ChangePercent'].round(2)
+if success
+	puts "Results: #{data['Symbol']} at $#{data['LastPrice']}."
 
-if percent > 0
-	puts "Up #{percent}%"
-elsif percent < 0
-	puts "Down #{percent}%"
+	percent = data['ChangePercent'].round(2)
+
+	if percent > 0
+		puts "Up #{percent}%"
+	elsif percent < 0
+		puts "Down #{percent}%"
+	else
+		puts "No change."
+	end
 else
-	puts "No change."
+	puts "Symbol not found, try again."
 end
