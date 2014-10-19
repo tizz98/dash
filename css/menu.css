@@ -2,7 +2,6 @@ html,
 body, 
 .container, 
 .content-wrap {
-	overflow: hidden;
 	height: 100%;
 }
 
