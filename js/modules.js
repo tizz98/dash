@@ -31,7 +31,29 @@ window.onload = function () {
 	});
 }
 
+function lockStocks() {
+	var elems = document.getElementsByClassName('s_edit');
+
+	for (var i = 0; i < elems.length; i++) {
+		console.log(elems[i]);
+		if ($(elems[i]).hasClass('fa-pencil')) {
+			// do nothing
+			continue;
+		} else {
+			// otherwise lock what they have in there and save it
+			$(elems[i]).removeClass('fa-save');
+			$(elems[i]).addClass('fa-pencil');
+			var elem = $(elems[i]).closest('.portlet').children('input')[0];
+
+			var text = $(elem).val();
+			$(elem).replaceWith('<h3 class="portlet-content stock_name">' + text + '</h3>');
+		}
+	};
+}
+
 function saveStocks() {
+	lockStocks();
+
 	var elems = document.querySelectorAll('.column2 .portlet h3')
 	var stocks = [];
 
