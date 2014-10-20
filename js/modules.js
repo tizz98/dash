@@ -35,8 +35,6 @@ function lockStocks() {
 	var elems = document.getElementsByClassName('s_edit');
 
 	for (var i = 0; i < elems.length; i++) {
-		console.log(elems[i]);
-
 		if ($(elems[i]).hasClass('fa-pencil')) {
 			// do nothing
 			continue;
