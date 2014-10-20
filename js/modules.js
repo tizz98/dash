@@ -36,6 +36,7 @@ function lockStocks() {
 
 	for (var i = 0; i < elems.length; i++) {
 		console.log(elems[i]);
+
 		if ($(elems[i]).hasClass('fa-pencil')) {
 			// do nothing
 			continue;
@@ -46,9 +47,18 @@ function lockStocks() {
 			var elem = $(elems[i]).closest('.portlet').children('input')[0];
 
 			var text = $(elem).val();
+
+			if (text == "" || text == null || text == undefined) {
+				text = data['stocks'][getRandomInt(0,3)];
+			}
+
 			$(elem).replaceWith('<h3 class="portlet-content stock_name">' + text + '</h3>');
 		}
 	};
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function saveStocks() {
