@@ -44,10 +44,6 @@ function getWeather(location, units) {
 	});
 }
 
-$( document ).ready(function() {
-	getWWL();
-});
-
 function getWWL(units,send) {
 	if (send == true) {
 		$.get("http://ipinfo.io", function(response) {
